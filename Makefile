@@ -14,7 +14,8 @@ run: $(TARGET)
 	./$(TARGET)
 
 profile: $(TARGET)
-	ncu --set full --export profile_output --force-overwrite ./$(TARGET)
+	mkdir -p $(CURDIR)/tmp
+	TMPDIR=$(CURDIR)/tmp ncu --set full --export profile_output --force-overwrite ./$(TARGET)
 
 clean:
 	rm -f $(TARGET) profile_output.ncu-rep
